@@ -1,0 +1,2600 @@
+{
+  "name": "Movie Ticket Booking Bot",
+  "type": "action",
+  "valid": true,
+  "status": "Available",
+  "created": "2022-07-21T14:30:14.534Z",
+  "updated": "2022-08-03T13:40:17.087Z",
+  "language": "en",
+  "skill_id": "2d454a27-c71d-43c7-84d8-79409677f73d",
+  "workspace": {
+    "actions": [
+      {
+        "steps": [
+          {
+            "step": "step_110",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**Thanks for utilising our service.**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "end_action"
+            },
+            "variable": "step_110",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_896"
+                },
+                {
+                  "value": "Yes",
+                  "from_entity": "entity_43377"
+                }
+              ]
+            }
+          },
+          {
+            "step": "step_117",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Select **Number of Seats**:\n\n<br />\n\n\n\n**Note:** Max of **6 Seats**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "1",
+                      "value": {
+                        "input": {
+                          "text": "1"
+                        }
+                      }
+                    },
+                    {
+                      "label": "2",
+                      "value": {
+                        "input": {
+                          "text": "2"
+                        }
+                      }
+                    },
+                    {
+                      "label": "3",
+                      "value": {
+                        "input": {
+                          "text": "3"
+                        }
+                      }
+                    },
+                    {
+                      "label": "4",
+                      "value": {
+                        "input": {
+                          "text": "4"
+                        }
+                      }
+                    },
+                    {
+                      "label": "5",
+                      "value": {
+                        "input": {
+                          "text": "5"
+                        }
+                      }
+                    },
+                    {
+                      "label": "6",
+                      "value": {
+                        "input": {
+                          "text": "6"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Select a valid option:"
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_34676",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_117",
+            "condition": {
+              "or": [
+                {
+                  "exists": {
+                    "variable": "step_535"
+                  }
+                },
+                {
+                  "exists": {
+                    "variable": "step_525"
+                  }
+                },
+                {
+                  "exists": {
+                    "variable": "step_396"
+                  }
+                },
+                {
+                  "exists": {
+                    "variable": "step_961"
+                  }
+                },
+                {
+                  "exists": {
+                    "variable": "step_992"
+                  }
+                },
+                {
+                  "exists": {
+                    "variable": "step_520"
+                  }
+                }
+              ]
+            },
+            "next_step": "step_144"
+          },
+          {
+            "step": "step_123",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Tickets are available at Inox Theater.\n\nAt which **time** you would like to watch?\n\n<br />\n\n\n\nMost of the show's are at"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "11:00 AM",
+                      "value": {
+                        "input": {
+                          "text": "11:00 AM"
+                        }
+                      }
+                    },
+                    {
+                      "label": "04:00 PM",
+                      "value": {
+                        "input": {
+                          "text": "04:00 PM"
+                        }
+                      }
+                    },
+                    {
+                      "label": "10:00 PM",
+                      "value": {
+                        "input": {
+                          "text": "10:00 PM"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Select a valid option:"
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_46967",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_123",
+            "condition": {
+              "gte": [
+                {
+                  "variable": "step_144"
+                },
+                {
+                  "time": {
+                    "value": "2022-08-03"
+                  }
+                }
+              ]
+            },
+            "next_step": "step_304"
+          },
+          {
+            "step": "step_144",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "On which date you would like to watch?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "response_type": "date",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I'm sorry, I did not catch that, please restate your response."
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "sys-date",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_144",
+            "condition": {
+              "exists": {
+                "variable": "step_117"
+              }
+            },
+            "next_step": "step_200"
+          },
+          {
+            "step": "step_200",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Please select on or after "
+                          },
+                          {
+                            "system_variable": "current_date"
+                          },
+                          {
+                            "scalar": ":"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "replay",
+              "clear": [
+                {
+                  "variable": "step_144"
+                }
+              ]
+            },
+            "variable": "step_200",
+            "condition": {
+              "lt": [
+                {
+                  "variable": "step_144"
+                },
+                {
+                  "time": {
+                    "value": "2022-08-03"
+                  }
+                }
+              ]
+            },
+            "next_step": "step_123"
+          },
+          {
+            "step": "step_304",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Okay, we are almost done with the booking.\n\n<br />\n\n\n\nPlease enter your **phone number**:\n\n(Eg: 1234567890)"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I'm sorry, I did not catch that, please restate your response."
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_12975",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_304",
+            "condition": {
+              "exists": {
+                "variable": "step_123"
+              }
+            },
+            "next_step": "step_650"
+          },
+          {
+            "step": "step_396",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Select the ***Region*** from where you want to watch [**Godse**]()"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Hyderabad",
+                      "value": {
+                        "input": {
+                          "text": "Hyderabad"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Vijayawada",
+                      "value": {
+                        "input": {
+                          "text": "Vijayawada"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Visakhapatnam",
+                      "value": {
+                        "input": {
+                          "text": "Visakhapatnam"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Select a valid option:"
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_10442",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_396",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_644"
+                },
+                {
+                  "value": "Godse - English",
+                  "from_entity": "entity_35915"
+                }
+              ]
+            },
+            "next_step": "step_961"
+          },
+          {
+            "step": "step_520",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Select the ***Region*** from where you want to watch [**Adipurush**]()"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Hyderabad",
+                      "value": {
+                        "input": {
+                          "text": "Hyderabad"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Vijayawada",
+                      "value": {
+                        "input": {
+                          "text": "Vijayawada"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Visakhapatnam",
+                      "value": {
+                        "input": {
+                          "text": "Visakhapatnam"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Select a valid option:"
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_10772",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_520",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_644"
+                },
+                {
+                  "value": "Adipurush - Telugu",
+                  "from_entity": "entity_35915"
+                }
+              ]
+            },
+            "next_step": "step_117"
+          },
+          {
+            "step": "step_525",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Select the ***Region*** from where you want to watch [**Vikram**]()"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Hyderabad",
+                      "value": {
+                        "input": {
+                          "text": "Hyderabad"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Chennai",
+                      "value": {
+                        "input": {
+                          "text": "Chennai"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Bangalore",
+                      "value": {
+                        "input": {
+                          "text": "Bangalore"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Select a valid option:"
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_45052",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_525",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_644"
+                },
+                {
+                  "value": "Vikram: Hitlist - Tamli",
+                  "from_entity": "entity_35915"
+                }
+              ]
+            },
+            "next_step": "step_396"
+          },
+          {
+            "step": "step_535",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Select the ***Region*** from where you want to watch  [**RRR**]()"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Hyderabad",
+                      "value": {
+                        "input": {
+                          "text": "Hyderabad"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Vijayawada",
+                      "value": {
+                        "input": {
+                          "text": "Vijayawada"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Visakhapatnam",
+                      "value": {
+                        "input": {
+                          "text": "Visakhapatnam"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Select a valid option:"
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_12074",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_535",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_644"
+                },
+                {
+                  "value": "Roudram Ranam Rudhiram (RRR) - Telugu",
+                  "from_entity": "entity_35915"
+                }
+              ]
+            },
+            "next_step": "step_525"
+          },
+          {
+            "step": "step_644",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "We are packed with lot of movies in this season. Which one would you like to book it for you.\n\n<br />\n\n\n\nMake a wise choice:"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Roudram Ranam Rudhiram (RRR) - Telugu",
+                      "value": {
+                        "input": {
+                          "text": "Roudram Ranam Rudhiram (RRR) - Telugu"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Vikram: Hitlist - Tamli",
+                      "value": {
+                        "input": {
+                          "text": "Vikram: Hitlist - Tamli"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Godse - English",
+                      "value": {
+                        "input": {
+                          "text": "Godse - English"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Thank you - Telugu",
+                      "value": {
+                        "input": {
+                          "text": "Thank you - Telugu"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Salaar - Hindi",
+                      "value": {
+                        "input": {
+                          "text": "Salaar - Hindi"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Adipurush - Telugu",
+                      "value": {
+                        "input": {
+                          "text": "Adipurush - Telugu"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Select a valid option:"
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_35915",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_644",
+            "next_step": "step_535"
+          },
+          {
+            "step": "step_650",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "The **OTP** has been **sent** to the given mobile number.\n\n<br />\n\n\n\nPlease enter **OTP** for validating the mobile number:"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Enter a number."
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "sys-number",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_650",
+            "condition": {
+              "exists": {
+                "variable": "step_304"
+              }
+            },
+            "next_step": "step_896"
+          },
+          {
+            "step": "step_656",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "We are sorry for the inconvenience that you had faced, we would try to improve ourself.\n\n<br />\n\n\n\n**Thanks for utilising our service.**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "end_action"
+            },
+            "variable": "step_656",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_896"
+                },
+                {
+                  "value": "No",
+                  "from_entity": "entity_43377"
+                }
+              ]
+            },
+            "next_step": "step_110"
+          },
+          {
+            "step": "step_896",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Your mobile number is **successfully verified**.\n\n<br />\n\n\n\nTicket and Payment Details have been sent to the given mobile number.\n\n***Complete the payment process and confirm your seats.***\n\n<br />\n\n\n\n**Do you like our service?**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Yes",
+                      "value": {
+                        "input": {
+                          "text": "Yes"
+                        }
+                      }
+                    },
+                    {
+                      "label": "No",
+                      "value": {
+                        "input": {
+                          "text": "No"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Select a valid option:"
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_43377",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_896",
+            "condition": {
+              "exists": {
+                "variable": "step_650"
+              }
+            },
+            "next_step": "step_656"
+          },
+          {
+            "step": "step_961",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Select the ***Region*** from where you want to watch [**Thank you**]()"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Hyderabad",
+                      "value": {
+                        "input": {
+                          "text": "Hyderabad"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Vijayawada",
+                      "value": {
+                        "input": {
+                          "text": "Vijayawada"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Visakhapatnam",
+                      "value": {
+                        "input": {
+                          "text": "Visakhapatnam"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Select a valid option:"
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_4791",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_961",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_644"
+                },
+                {
+                  "value": "Thank you - Telugu",
+                  "from_entity": "entity_35915"
+                }
+              ]
+            },
+            "next_step": "step_992"
+          },
+          {
+            "step": "step_992",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Select the ***Region*** from where you want to watch [**Salaar**]()"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Hyderabad",
+                      "value": {
+                        "input": {
+                          "text": "Hyderabad"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Mumbai",
+                      "value": {
+                        "input": {
+                          "text": "Mumbai"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Delhi",
+                      "value": {
+                        "input": {
+                          "text": "Delhi"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text": "I didn't catch that. Select a valid option:"
+                        }
+                      ],
+                      "response_type": "text"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_24379",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_992",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_644"
+                },
+                {
+                  "value": "Salaar - Hindi",
+                  "from_entity": "entity_35915"
+                }
+              ]
+            },
+            "next_step": "step_520"
+          }
+        ],
+        "title": "Book Movie Ticket",
+        "action": "action_18272",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "intent": "action_18272_intent_30884"
+        },
+        "variables": [
+          {
+            "title": "**Thanks for utilising our service.**",
+            "variable": "step_110",
+            "data_type": "any"
+          },
+          {
+            "title": "Select **Number of Seats**: <br /> **Note:** Max of **6 Seats**",
+            "variable": "step_117",
+            "data_type": "any"
+          },
+          {
+            "title": "Tickets are available at Inox Theater. At which **time** you wou",
+            "variable": "step_123",
+            "data_type": "any"
+          },
+          {
+            "title": "On which date you would like to watch?",
+            "variable": "step_144",
+            "data_type": "date"
+          },
+          {
+            "title": "Please select on or after {variable}:",
+            "variable": "step_200",
+            "data_type": "any"
+          },
+          {
+            "title": "Okay, we are almost done with the booking. <br /> Please enter y",
+            "variable": "step_304",
+            "data_type": "any"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**Godse**]",
+            "variable": "step_396",
+            "data_type": "any"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**Adipurus",
+            "variable": "step_520",
+            "data_type": "any"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**Vikram**",
+            "variable": "step_525",
+            "data_type": "any"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**RRR**]()",
+            "variable": "step_535",
+            "data_type": "any"
+          },
+          {
+            "title": "We are packed with lot of movies in this season. Which one would",
+            "variable": "step_644",
+            "data_type": "any"
+          },
+          {
+            "title": "The **OTP** has been **sent** to the given mobile number. <br />",
+            "variable": "step_650",
+            "data_type": "number"
+          },
+          {
+            "title": "We are sorry for the inconvenience that you had faced, we would ",
+            "variable": "step_656",
+            "data_type": "any"
+          },
+          {
+            "title": "Your mobile number is **successfully verified**. <br /> Ticket a",
+            "variable": "step_896",
+            "data_type": "any"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**Thank yo",
+            "variable": "step_961",
+            "data_type": "any"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**Salaar**",
+            "variable": "step_992",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "fallback",
+        "topic_switch": {
+          "allowed_from": true,
+          "allowed_into": true
+        },
+        "disambiguation_opt_out": false
+      },
+      {
+        "steps": [],
+        "title": "No action matches",
+        "action": "anything_else",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "expression": "anything_else"
+        },
+        "variables": [],
+        "disambiguation_opt_out": true
+      },
+      {
+        "steps": [
+          {
+            "step": "step_001",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I'm afraid I don't understand. I can connect you to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_001",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Step validation failed"
+                }
+              ]
+            },
+            "next_step": "step_002"
+          },
+          {
+            "step": "step_002",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "Sorry I couldn't assist you. I will connect you to an agent right away."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_002",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Agent requested"
+                }
+              ]
+            },
+            "next_step": "step_003"
+          },
+          {
+            "step": "step_003",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I am afraid I do not understand what you are asking, let me connect you to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_003",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "No action matches"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Fallback",
+        "action": "fallback",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "intent": "fallback_connect_to_agent"
+        },
+        "variables": [
+          {
+            "title": "I'm afraid I don't understand. I can connect you to an agent.",
+            "variable": "step_001",
+            "data_type": "any"
+          },
+          {
+            "title": "Sorry I couldn't assist you. I will connect you to an agent righ",
+            "variable": "step_002",
+            "data_type": "any"
+          },
+          {
+            "title": "I am afraid I do not understand what you are asking, let me conn",
+            "variable": "step_003",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "anything_else",
+        "disambiguation_opt_out": true
+      },
+      {
+        "steps": [
+          {
+            "step": "step_297",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Hello, I am here to help you out to Book Movie Tickets with just chatting."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "invoke_another_action",
+              "invoke_action": {
+                "action": "action_18272",
+                "parameters": null,
+                "result_variable": "step_297_result_1"
+              }
+            },
+            "variable": "step_297"
+          }
+        ],
+        "title": "Greet customer",
+        "action": "welcome",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "expression": "welcome"
+        },
+        "variables": [
+          {
+            "title": "Hello, I am here to help you out to Book Movie Tickets with just",
+            "variable": "step_001",
+            "data_type": "any"
+          },
+          {
+            "variable": "step_001_result_1",
+            "data_type": "any"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**Godse**]",
+            "variable": "step_182",
+            "data_type": "any"
+          },
+          {
+            "title": "We are sorry for the inconvenience that you had faced, we would ",
+            "variable": "step_296",
+            "data_type": "any"
+          },
+          {
+            "title": "Hello, I am here to help you out to Book Movie Tickets with just",
+            "variable": "step_297",
+            "data_type": "any"
+          },
+          {
+            "variable": "step_297_result_1",
+            "data_type": "any"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**Salaar**",
+            "variable": "step_339",
+            "data_type": "any"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**RRR**](h",
+            "variable": "step_351",
+            "data_type": "any"
+          },
+          {
+            "title": "Your mobile number is **successfully verified**. <br /> Ticket a",
+            "variable": "step_417",
+            "data_type": "yes_no"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**Thank yo",
+            "variable": "step_449",
+            "data_type": "any"
+          },
+          {
+            "title": "The **OTP** has been **sent** to the given mobile number. <br />",
+            "variable": "step_543",
+            "data_type": "number"
+          },
+          {
+            "title": "On which date you would like to watch?",
+            "variable": "step_556",
+            "data_type": "date"
+          },
+          {
+            "title": "Select the ***Region*** from where you want to watch [**Vikram**",
+            "variable": "step_646",
+            "data_type": "any"
+          },
+          {
+            "title": "Tickets are available at Inox Theater. <br /> At which **time** ",
+            "variable": "step_649",
+            "data_type": "any"
+          },
+          {
+            "title": "Please select on or after {variable}:",
+            "variable": "step_674",
+            "data_type": "any"
+          },
+          {
+            "title": "Okay, we are almost done with the booking. <br /> Please enter y",
+            "variable": "step_901",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "action_18272",
+        "disambiguation_opt_out": true
+      }
+    ],
+    "intents": [
+      {
+        "intent": "action_18272_intent_30884",
+        "examples": [
+          {
+            "text": "Book Movie Ticket"
+          },
+          {
+            "text": "hello"
+          },
+          {
+            "text": "Hello!"
+          },
+          {
+            "text": "hello there"
+          },
+          {
+            "text": "hi"
+          },
+          {
+            "text": "hi there"
+          },
+          {
+            "text": "Movie Ticket Booking"
+          }
+        ]
+      },
+      {
+        "intent": "fallback_connect_to_agent",
+        "examples": [
+          {
+            "text": "Agent help"
+          },
+          {
+            "text": "Call agent"
+          },
+          {
+            "text": "Can I connect to an agent?"
+          },
+          {
+            "text": "I would like to speak to a human"
+          },
+          {
+            "text": "I would like to speak to someone"
+          }
+        ],
+        "description": "Please transfer me to an agent"
+      }
+    ],
+    "entities": [
+      {
+        "entity": "entity_10442",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vijayawada",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Visakhapatnam",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_10648",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vijayawada",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Visakhapatnam",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_10766",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vijayawada",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Visakhapatnam",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_10772",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vijayawada",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Visakhapatnam",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_12074",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vijayawada",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Visakhapatnam",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_12975",
+        "values": [
+          {
+            "type": "patterns",
+            "value": "Phone number",
+            "patterns": [
+              "\\b(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\b"
+            ]
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_1697",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Delhi",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Mumbai",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_21506",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Adipurush - Telugu",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Godse - English",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Roudram Ranam Rudhiram (RRR) - Telugu",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Salaar - Hindi",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Thank you - Telugu",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vikram: Hitlist - Tamli",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_24379",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Delhi",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Mumbai",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_34676",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "1",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "2",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "3",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "4",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "5",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "6",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_35915",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Adipurush - Telugu",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Godse - English",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Roudram Ranam Rudhiram (RRR) - Telugu",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Salaar - Hindi",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Thank you - Telugu",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vikram: Hitlist - Tamli",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_37301",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vijayawada",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Visakhapatnam",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_40658",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Bangalore",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Chennai",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_43377",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "No",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Yes",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_43863",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Adipurush - Telugu",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Godse - Telugu",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Roudram Ranam Rudhiram (RRR) - Telugu",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Salaar - Hindi",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Thank you - Telugu",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vikram: Hitlist - Telugu",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_45052",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Bangalore",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Chennai",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_46967",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "04:00 PM",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "10:00 PM",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "11:00 AM",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_47765",
+        "values": [
+          {
+            "type": "patterns",
+            "value": "Phone number",
+            "patterns": [
+              "\\b(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\b"
+            ]
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_4791",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vijayawada",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Visakhapatnam",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_48824",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Bangalore",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Delhi",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Hyderabad",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Mumbai",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Vijayawada",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Visakhapatnam",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_7302",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "04:00 PM",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "10:00 PM",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "11:00 AM",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "sys-date",
+        "values": []
+      },
+      {
+        "entity": "sys-number",
+        "values": []
+      },
+      {
+        "entity": "sys-time",
+        "values": []
+      },
+      {
+        "entity": "sys-yes-no",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "No",
+            "synonyms": [
+              "nay",
+              "negative",
+              "nope",
+              "not"
+            ]
+          },
+          {
+            "type": "synonyms",
+            "value": "Yes",
+            "synonyms": [
+              "positive",
+              "sure",
+              "yea",
+              "yeah",
+              "yup"
+            ]
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "api_version": {
+        "major_version": "v2",
+        "minor_version": "2018-11-08"
+      }
+    },
+    "variables": [],
+    "data_types": [
+      {
+        "title": "SelectedMovie",
+        "entity": "entity_43863",
+        "response": {
+          "options": [
+            {
+              "label": "Roudram Ranam Rudhiram (RRR) - Telugu",
+              "value": {
+                "input": {
+                  "text": "Roudram Ranam Rudhiram (RRR) - Telugu"
+                }
+              }
+            },
+            {
+              "label": "Vikram: Hitlist - Telugu",
+              "value": {
+                "input": {
+                  "text": "Vikram: Hitlist - Telugu"
+                }
+              }
+            },
+            {
+              "label": "Godse - Telugu",
+              "value": {
+                "input": {
+                  "text": "Godse - Telugu"
+                }
+              }
+            },
+            {
+              "label": "Thank you - Telugu",
+              "value": {
+                "input": {
+                  "text": "Thank you - Telugu"
+                }
+              }
+            },
+            {
+              "label": "Salaar - Hindi",
+              "value": {
+                "input": {
+                  "text": "Salaar - Hindi"
+                }
+              }
+            },
+            {
+              "label": "Adipurush - Telugu",
+              "value": {
+                "input": {
+                  "text": "Adipurush - Telugu"
+                }
+              }
+            }
+          ],
+          "response_type": "option"
+        },
+        "data_type": "data-type_12172"
+      },
+      {
+        "title": "Selected Movie",
+        "entity": "entity_21506",
+        "response": {
+          "options": [
+            {
+              "label": "Roudram Ranam Rudhiram (RRR) - Telugu",
+              "value": {
+                "input": {
+                  "text": "Roudram Ranam Rudhiram (RRR) - Telugu"
+                }
+              }
+            },
+            {
+              "label": "Vikram: Hitlist - Tamli",
+              "value": {
+                "input": {
+                  "text": "Vikram: Hitlist - Tamli"
+                }
+              }
+            },
+            {
+              "label": "Godse - English",
+              "value": {
+                "input": {
+                  "text": "Godse - English"
+                }
+              }
+            },
+            {
+              "label": "Thank you - Telugu",
+              "value": {
+                "input": {
+                  "text": "Thank you - Telugu"
+                }
+              }
+            },
+            {
+              "label": "Salaar - Hindi",
+              "value": {
+                "input": {
+                  "text": "Salaar - Hindi"
+                }
+              }
+            },
+            {
+              "label": "Adipurush - Telugu",
+              "value": {
+                "input": {
+                  "text": "Adipurush - Telugu"
+                }
+              }
+            }
+          ],
+          "response_type": "option"
+        },
+        "data_type": "data-type_16135"
+      },
+      {
+        "title": "Selected Region",
+        "entity": "entity_37301",
+        "response": {
+          "options": [
+            {
+              "label": "Hyderabad",
+              "value": {
+                "input": {
+                  "text": "Hyderabad"
+                }
+              }
+            },
+            {
+              "label": "Vijayawada",
+              "value": {
+                "input": {
+                  "text": "Vijayawada"
+                }
+              }
+            },
+            {
+              "label": "Visakhapatnam",
+              "value": {
+                "input": {
+                  "text": "Visakhapatnam"
+                }
+              }
+            }
+          ],
+          "response_type": "option"
+        },
+        "data_type": "data-type_49363"
+      }
+    ],
+    "counterexamples": [],
+    "system_settings": {
+      "off_topic": {
+        "enabled": true
+      },
+      "topic_switch": {
+        "enabled": true,
+        "messages": {
+          "confirm_return": {
+            "text": "Return to previous topic?"
+          },
+          "confirm_switch": {
+            "text": "Switch from the current topic?"
+          }
+        },
+        "question_steps_threshold": 2
+      },
+      "disambiguation": {
+        "prompt": "Did you mean:",
+        "enabled": true,
+        "randomize": true,
+        "max_suggestions": 5,
+        "suggestion_text_policy": "title",
+        "none_of_the_above_prompt": "None of the above"
+      },
+      "intent_classification": {
+        "training_backend_version": "v2"
+      },
+      "spelling_auto_correct": true
+    },
+    "learning_opt_out": false
+  },
+  "description": "created for assistant 39c154c1-70f9-4b09-8125-d49e76c74516",
+  "assistant_id": "39c154c1-70f9-4b09-8125-d49e76c74516",
+  "workspace_id": "2d454a27-c71d-43c7-84d8-79409677f73d",
+  "dialog_settings": {},
+  "next_snapshot_version": "1"
+}
